@@ -1,11 +1,17 @@
-#!/usr/bin/env python3
-
 from argparse import ArgumentParser
-from soundify import soundify
+from .soundify import soundify, play
 
 __author__ = '@amiremohamadi'
 __version__ = '0.1'
 __description__ = f'to soundify error codes. version {__version__}'
+
+
+def test(code):
+    '''
+    test sounds by exitcode
+    '''
+    play(code)
+    return 0
 
 
 def main():
@@ -15,10 +21,14 @@ def main():
 
     parser = ArgumentParser(description=__description__)
     parser.add_argument('-v', '--version', action='version', version=__version__)
-    parser.add_argument('command', nargs='+', help='command to run')
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument('-t', '--test', nargs='?', type=int, help='test exitcode sound')
+    group.add_argument('command', nargs='?', type=str, help='command to run')
     args = parser.parse_args()
 
-    print(args.command)
+    # with --test/-t flag you can test an exitcode sound
+    if args.test is not None:
+        return test(args.test)
 
     return soundify(args.command)
 
