@@ -10,7 +10,7 @@ changelogs:
 
 from .config import read_config
 from subprocess import Popen, DEVNULL
-from playsound import playsound
+from playsound import playsound, PlaysoundException
 
 
 def play(code):
@@ -19,11 +19,15 @@ def play(code):
     '''
     # a map from error_code to sound_dir
     err_sound = read_config()
-    print(err_sound)
     
     sound = err_sound.get(code, None)
     if sound is not None:
-        playsound(sound)
+        try:
+            playsound(sound)
+            ret = 0
+        except PlaysoundException:
+            ret = 1
+    return ret
 
 
 def soundify(command):

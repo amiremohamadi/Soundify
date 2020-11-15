@@ -11,8 +11,7 @@ def test(code):
     '''
     test sounds by exitcode
     '''
-    play(code)
-    return 0
+    return play(code)
 
 
 def main():
