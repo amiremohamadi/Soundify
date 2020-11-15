@@ -17,6 +17,7 @@ def play(code):
     '''
     play a sound by exitcode
     '''
+    ret = 1
     # a map from error_code to sound_dir
     err_sound = read_config()
     
@@ -26,7 +27,7 @@ def play(code):
             playsound(sound)
             ret = 0
         except PlaysoundException:
-            ret = 1
+            print('could not play. make sure sounds path (inside config file) is correct.', file=stderr)
     return ret
 
 
