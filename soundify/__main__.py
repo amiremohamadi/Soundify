@@ -3,7 +3,7 @@ from .soundify import soundify, play
 from .config import CONFIG_FILE
 
 __author__ = '@amiremohamadi'
-__version__ = '0.1'
+__version__ = '0.4'
 __description__ = f'to soundify error codes. version {__version__}'
 
 

@@ -31,5 +31,5 @@ def read_config():
     with open(CONFIG_FILE, 'r') as config_file:
         config_dict = safe_load(config_file)
 
-    return config_dict
+    return config_dict or {}
 
