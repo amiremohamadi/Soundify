@@ -42,6 +42,13 @@ it's a yaml file. syntax is like this:
 error_code: 'path/to/sound/file'
 ```
 
+**NOTE**: You can test your config:
+```sh
+$ soundify -t 0
+$ soundify -t 1
+```
+And check if all the configured sounds are playing well or not.
+
 That's it!
 
 **You can find cool sounds from [here](http://soundbible.com/).**
