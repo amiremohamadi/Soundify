@@ -8,21 +8,15 @@ from os import path
 
 
 # TODO: platform independant
-CONFIG_DIR = str(Path.home()) + '/.soundify'
-CONFIG_FILE = CONFIG_DIR + '/config.yml'
+CONFIG_FILE = str(Path.home()) + '/.soundify.yml'
 
 
 def config_exist():
-    '''check config file/dir is available'''
-    global CONFIG_DIR
+    '''check config file is available'''
     global CONFIG_FILE
-
-    if not path.exists(CONFIG_DIR):
-        return False
 
     if not path.exists(CONFIG_FILE):
         return False
-
     return True
 
 
