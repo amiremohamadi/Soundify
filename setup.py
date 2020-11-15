@@ -6,6 +6,12 @@ from setuptools import setup
 setup(name             = 'soundify',
       packages         = ['soundify'],
       version          = '0.1',
+
+      install_requires = [
+        'playsound',
+        'pyyaml'
+      ],
+
       description      = 'soundify exitcodes',
       url              = 'https://github.com/amiremohamadi/Soundify',
       author           = 'amiremohamadi',
