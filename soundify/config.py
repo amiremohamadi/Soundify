@@ -3,11 +3,12 @@ helper functions related to configuration file
 '''
 
 from yaml import safe_load
-from appdirs import user_config_dir
+from pathlib import Path
 from os import path
 
 
-CONFIG_DIR = user_config_dir() + '/soundify'
+# TODO: platform independant
+CONFIG_DIR = str(Path.home()) + '/.soundify'
 CONFIG_FILE = CONFIG_DIR + '/config.yml'
 
 
@@ -30,6 +31,7 @@ def read_config():
     global CONFIG_FILE
 
     if not config_exist():
+        print('config not exist', CONFIG_FILE)
         return {}
 
     with open(CONFIG_FILE, 'r') as config_file:
