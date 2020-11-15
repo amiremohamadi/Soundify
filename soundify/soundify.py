@@ -11,7 +11,7 @@ changelogs:
 from .config import read_config
 from subprocess import Popen, DEVNULL
 from playsound import playsound, PlaysoundException
-
+from sys import stderr
 
 def play(code):
     '''
@@ -36,8 +36,12 @@ def soundify(command):
     run command as another process, check exit code and play related sound
     '''
     # run the command in new process
-    proc = Popen(command.split())
-    proc.wait()
+    try:
+        proc = Popen(command.split())
+        proc.wait()
+    except FileNotFoundError:
+        print('command not found.', file=stderr)
+        return 127 
 
     # capture return code, play sound
     ret = proc.returncode
