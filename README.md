@@ -21,6 +21,31 @@ $ cd Soundify
 $ pip3 install .
 ```
 
+## Configure
+You need a config file to tell `soundify`, play which music for what exit code.
+
+1. check config path by:
+```sh
+$ soundify -c
+```
+
+2. create config file 
+```sh
+$ vim $(soundify -c)
+```
+
+it's a yaml file. syntax is like this:
+```yaml
+0: 'path/to/sound/file'
+1: 'path/to/sound/file'
+2: 'path/to/sound/file'
+error_code: 'path/to/sound/file'
+```
+
+That's it!
+
+**You can find cool sounds from [here](http://soundbible.com/).**
+
 ## Usage
 ```sh
 $ soundify your_command
